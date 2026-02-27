@@ -1,23 +1,29 @@
 <html lang="en">
 <head>
     <title> Profile Picture Validation </title>
+    
 </head>
 <body>
     <form >
         <fieldset>
             <legend> Profile Picture </legend>
 
-            User Id <input type="text"> <br> <br>
+            User Id <input type="numeric" id="userId"> <br> <br>
 
-            Picture <input type="file">
+            Picture <input type="file" id="picture">
 
             <hr>
 
-            <input type="button" value="Submit"> 
+            <input type="button" value="Submit" id="btn"> 
 
         </fieldset>
         <br>
 
     </form>
+
+    <p id="msg"></p>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
