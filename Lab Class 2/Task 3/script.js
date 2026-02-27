@@ -1,4 +1,4 @@
-let btn=document.getElementById('btn')
+let btn=document.getElementById('btn');
 
 btn.addEventListener('click',function(){
     let male=document.getElementById("male");
