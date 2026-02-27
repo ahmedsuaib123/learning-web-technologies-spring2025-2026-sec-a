@@ -6,8 +6,7 @@ btn.addEventListener('click',function(){
 
     if(bloodGroup==""){
         msg.innerHTML="Must be selected !";
-    }
-    else{
+    } else{
         msg.innerHTML=bloodGroup;
     }
 
