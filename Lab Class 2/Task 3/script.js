@@ -13,5 +13,4 @@ btn.addEventListener('click',function(){
         msg.innerHTML="Gender Selected Successfully";
     }
 
-    
 });
