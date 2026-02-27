@@ -10,8 +10,7 @@ btn.addEventListener('click',function(){
 
     if(!ssc.checked && !hsc.checked && !bsc.checked){
         msg.innerHTML = "At least one of them has to be selected!";
-    }
-    else{
+    } else{
         msg.innerHTML = "Degree selected successfully!";
     }
 
