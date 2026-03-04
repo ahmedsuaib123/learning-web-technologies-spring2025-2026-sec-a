@@ -1,0 +1,29 @@
+#calculator{
+    width:200px;
+    text-align:center;
+    margin-top:10px;
+}       
+
+#display{
+    width:200px;
+    height:30px;
+    margin-bottom:10px;
+    text-align:right;
+}
+
+button{
+    width:40px;
+    height:40px;
+    margin:3px;
+}    
+
+#showCalc{
+    width:120px;
+    height:35px;
+    font-size:14px;
+    margin-bottom:10px;
+}        
+
+.clearBtn{
+    width:90px;
+}
