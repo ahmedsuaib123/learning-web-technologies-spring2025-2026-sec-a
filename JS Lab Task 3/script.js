@@ -1,12 +1,44 @@
 let board = document.getElementById("board");
 let statusText = document.getElementById("status");
 let resetBtn = document.getElementById("resetBtn");
+let createBoardBtn = document.getElementById("createBoardBtn");
 
 let cells = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let gameOver = false;
 
-resetBtn.addEventListener("click", function(){
+function cellClick(cell){
+
+    let index = cell.getAttribute("data-index");
+
+    if(cells[index] != "" || gameOver){
+        return;
+    }
+
+    cell.innerHTML = currentPlayer;
+    cells[index] = currentPlayer;
+
+    if(checkWinner()){
+        statusText.innerHTML = "Player " + currentPlayer + " wins!";
+        gameOver = true;
+    } else if(checkDraw()){
+        statusText.innerHTML = "It's a draw!";
+        gameOver = true;
+    }
+    else{
+
+        if(currentPlayer == "X"){
+            currentPlayer = "O";
+        } else{
+            currentPlayer = "X";
+        }
+
+        statusText.innerHTML = "Player " + currentPlayer + "'s turn";
+    }
+
+}
+
+function createBoard(){
 
     board.innerHTML = "";
     cells = ["", "", "", "", "", "", "", "", ""];
@@ -21,35 +53,30 @@ resetBtn.addEventListener("click", function(){
         cell.setAttribute("data-index", i);
 
         cell.addEventListener("click", function(){
-
-            let index = cell.getAttribute("data-index");
-
-            if(cells[index] != "" || gameOver){
-                return;
-            }
-
-            cell.innerHTML = currentPlayer;
-            cells[index] = currentPlayer;
-
-            if(checkWinner()){
-                statusText.innerHTML = "Player " + currentPlayer + " wins!";
-                gameOver = true;
-            } else if(checkDraw()){
-                statusText.innerHTML = "It's a draw!";
-                gameOver = true;
-            } else{
-                if(currentPlayer == "X"){
-                    currentPlayer = "O";
-                } else{
-                    currentPlayer = "X";
-                }
-
-                statusText.innerHTML = "Player " + currentPlayer + "'s turn";
-            }
-
+            cellClick(cell);
         });
 
         board.appendChild(cell);
+    }
+
+}
+
+createBoardBtn.addEventListener("click", function(){
+    createBoard();
+});
+
+resetBtn.addEventListener("click", function(){
+
+    cells = ["", "", "", "", "", "", "", "", ""];
+    currentPlayer = "X";
+    gameOver = false;
+
+    statusText.innerHTML = "Player X's turn";
+
+    let allCells = document.querySelectorAll(".cell");
+
+    for(let i = 0; i < allCells.length; i++){
+        allCells[i].innerHTML = "";
     }
 
 });
@@ -68,6 +95,7 @@ function checkWinner(){
     ];
 
     for(let i = 0; i < wins.length; i++){
+
         let a = wins[i][0];
         let b = wins[i][1];
         let c = wins[i][2];
@@ -75,6 +103,7 @@ function checkWinner(){
         if(cells[a] != "" && cells[a] == cells[b] && cells[b] == cells[c]){
             return true;
         }
+
     }
 
     return false;
