@@ -1,0 +1,28 @@
+body{
+    text-align: center;
+    font-family: Arial;
+}
+
+.board{
+    width: 180px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,60px);
+    grid-gap: 5px;
+}
+
+.cell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+button{
+    margin-top: 15px;
+    padding: 8px 15px;
+}
