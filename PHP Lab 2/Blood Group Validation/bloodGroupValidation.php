@@ -1,0 +1,30 @@
+<?php
+
+?>
+
+<html lang="en">
+<head>
+    <title>FORM | Blood Group Validation</title>
+</head>
+<body>
+    <form action="post" >
+        <fieldset>
+            <legend> BLOOD GROUP </legend>
+            <select >
+                <option> A+ </option>
+                <option> A- </option>
+                <option> B+ </option>
+                <option> B- </option>
+                <option> O+ </option>
+                <option> O- </option>
+                <option> AB+ </option>
+                <option> AB- </option>
+            </select>
+            <hr>
+        
+            <input type="submit" value="Submit">
+        </fieldset>
+        
+    </form>
+</body>
+</html>
