@@ -11,9 +11,12 @@
         $password     = $_POST['password'];
 
         if($employeeName == "" || $companyName == "" || $contactNo == "" || $username == "" || $password == ""){
+
             echo "All fields required!";
-        }else{
-            $_SESSION['user'] = [
+
+        } else {
+
+            $user = [
                 'employeeName' => $employeeName,
                 'companyName'  => $companyName,
                 'contactNo'    => $contactNo,
@@ -21,33 +24,57 @@
                 'password'     => $password
             ];
 
-            header("location: ../View/login.php");
+            $status = addUser($user);
+
+            if($status){
+
+                $_SESSION['status'] = true;
+
+                header("location: ../View/login.php");
+
+            } else {
+                echo "Error!";
+            }
         }
-    }elseif(isset($_POST['login'])){
+
+    } elseif(isset($_POST['login'])){
 
         $username = $_POST['username'];
         $password = $_POST['password'];
 
         if($username == "" || $password == ""){
-            echo "Empty username or password!";
-        }else{
 
-            if(isset($_SESSION['user']) &&
-            $username == $_SESSION['user']['username'] &&
-            $password == $_SESSION['user']['password']){
+            echo "Empty username or password!";
+
+        } else {
+
+            $user = [
+                'username' => $username,
+                'password' => $password
+            ];
+
+            $status = login($user);
+
+            if($status){
 
                 $_SESSION['status'] = true;
+
                 header("location: ../View/home.php");
 
-            }else{
+            } else {
+
                 echo "Invalid user!";
             }
         }
+
     } elseif(isset($_POST['logout'])){
 
         session_destroy();
+
         header("location: ../View/login.php");
-    } else{
+
+    } else {
+
         echo "Invalid Request!";
     }
 ?>
