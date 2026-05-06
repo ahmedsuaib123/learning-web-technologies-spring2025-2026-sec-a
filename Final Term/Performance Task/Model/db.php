@@ -1,0 +1,16 @@
+<?php
+    $host='127.0.0.1';
+    $dbuser="root"; 
+    $dbpass=''; 
+    $dbname="Job Portal"; 
+
+    function getConnection(){ 
+        global $host;
+        global $dbuser;
+        global $dbpass;
+        global $dbname;
+
+        $con=mysqli_connect($host,$dbuser,$dbpass,$dbname); 
+        return $con; 
+    }
+?>
